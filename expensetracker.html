@@ -35,7 +35,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    window.addEventListener('DOMContentLoaded', function () {
       const expenseForm = document.getElementById('expenseForm');
       const expenseList = document.getElementById('expenseList');
       const API_BASE_URL = 'https://crudcrud.com/api/1717c3be78554ca09e7ddc21519f4b3b';
@@ -60,10 +60,7 @@
         const li = document.createElement('li');
         li.classList.add('list-group-item');
 
-        const strong = document.createElement('strong');
-        strong.textContent = expense.description;
-
-        const amountText = document.createTextNode(` - rs.${expense.amount} (${expense.category})`);
+        const amountText = document.createTextNode(` ${expense.description}- rs.${expense.amount} (${expense.category})`);
 
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
@@ -73,7 +70,6 @@
         editBtn.textContent = 'Edit';
         editBtn.classList.add('btn', 'btn-sm', 'btn-primary', 'float-end', 'editBtn');
 
-        li.appendChild(strong);
         li.appendChild(amountText);
         li.appendChild(deleteBtn);
         li.appendChild(editBtn);
@@ -127,9 +123,6 @@
 
       fetchExpenses();
 
-      window.addEventListener('load', function () {
-        // Your code here (if needed)
-      });
     });
 
   </script>
